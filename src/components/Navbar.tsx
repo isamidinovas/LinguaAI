@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 h-16 bg-white shadow-md  px-6 z-30">
+    <nav className="fixed top-0 left-0 right-0 h-16 bg-white shadow-md  px-6 z-30 ">
       <div className="max-w-[1200px] flex items-center justify-between  mx-auto my-auto py-2">
         {/* Левый блок — можно добавить лого */}
         <div className="flex items-center gap-4">

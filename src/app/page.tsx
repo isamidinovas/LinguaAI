@@ -9,11 +9,9 @@ const Home = () => {
           <h1 className="font-bold text-5xl sm:text-6xl lg:text-7xl text-cyan-700">
             LinguaAI
           </h1>
-          <p className="text-lg sm:text-xl lg:text-2xl">
-            description
-          </p>
+          <p className="text-lg sm:text-xl lg:text-2xl">description</p>
           <a
-            href="#"
+            href={"/auth/signIn"}
             className="border-green-700 p-2 bg-green-700 sm:w-[55%] lg:w-[50%] rounded-xl text-center text-white font-bold"
           >
             Get start

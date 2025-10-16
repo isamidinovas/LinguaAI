@@ -1,17 +1,22 @@
 "use client";
 
-
 import { useState } from "react";
 import { FaHome, FaUser, FaCog } from "react-icons/fa";
 import { GoChevronRight } from "react-icons/go";
-
+import Image from "next/image";
+import userPng from "../../assets/user.png";
+import { PiCardsBold } from "react-icons/pi";
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const links = [
-    { icon: <FaHome size={24} />, label: "Home" },
-    { icon: <FaUser size={24} />, label: "Profile" },
-    { icon: <FaCog size={24} />, label: "Settings" },
+    { icon: <FaHome size={24} />, label: "Home", href: "/" },
+    { icon: <FaUser size={24} />, label: "Profile", href: "/profile" },
+    {
+      icon: <PiCardsBold size={24} />,
+      label: "Flashcards",
+      href: "/flashcards",
+    },
   ];
 
   return (
@@ -22,17 +27,35 @@ const Sidebar = () => {
         transform transition-all duration-300 z-40
         ${isOpen ? "w-64" : "w-20"} hidden sm:flex`}
       >
+        {isOpen && (
+          <div className="flex items-center gap-4 px-4 ">
+            <Image
+              src={userPng}
+              alt="user"
+              width={40}
+              height={40}
+              className="rounded-full"
+            />
+
+            <div>
+              <h3 className="text-black">Sasha</h3>
+              <p className="text-black">info abut Sasha</p>
+            </div>
+          </div>
+        )}
         {/* Ссылки */}
         <div className="flex flex-col gap-8 mt-10 w-full items-center md:items-start px-4">
           {links.map((link, idx) => (
             <a
               key={idx}
-              href="#"
+              href={link.href}
               className="flex flex-col items-center md:flex-row md:gap-3 text-gray-700 hover:text-cyan-700 w-full"
             >
               <div>{link.icon}</div>
               {isOpen && (
-                <span className="mt-2 md:mt-0 md:ml-2 text-sm">{link.label}</span>
+                <span className="mt-2 md:mt-0 md:ml-2 text-sm">
+                  {link.label}
+                </span>
               )}
             </a>
           ))}
@@ -72,7 +95,7 @@ const Sidebar = () => {
             {links.map((link, idx) => (
               <a
                 key={idx}
-                href="#"
+                href={link.href}
                 className="flex flex-col items-center text-gray-700 hover:text-cyan-700 mb-6"
               >
                 <div>{link.icon}</div>
